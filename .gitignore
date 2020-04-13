@@ -1,0 +1,17 @@
+.env
+.env.local
+.env.local.php
+.env.*.local
+config/secrets/prod/prod.decrypt.private.php
+var/
+vendor/
+.phpunit
+.phpunit.result.cache
+phpunit.xml
+node_modules/
+assets/*
+npm-debug.log
+yarn-error.log
+yarn.lock
+composer.lock
+symfony.lock
