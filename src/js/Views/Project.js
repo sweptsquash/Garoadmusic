@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
+import isSafari from '../Components/SafariDetection';
 
 class Project extends Component {
 	constructor(props) {
@@ -20,7 +21,14 @@ class Project extends Component {
 
 		this.state = {
 			isModalOpen: false,
+			webp: true,
 		};
+	}
+
+	componentDidMount() {
+		if(isSafari()) {
+			this.setState({ webp: false });
+		}
 	}
 
 	render() {
@@ -43,8 +51,8 @@ class Project extends Component {
 					<Container fluid={true}>
 						<Row>
 							<Col xl={12}>
-								<div className="project-banner" style={{ backgroundImage: `url(${ project.banner })` }}>
-									<img src={ project.logo } alt={ project.name } className="project-logo" style={ ((project.style !== undefined && project.style.logo !== undefined) ? project.style.logo : {}) } />
+								<div className="project-banner" style={{ backgroundImage: `url(${ (this.state.webp) ? project.banner.webp : project.banner.png })` }}>
+									<img src={ (this.state.webp) ? project.logo.webp : project.logo.png } alt={ project.name } className="project-logo" style={ ((project.style !== undefined && project.style.logo !== undefined) ? project.style.logo : {}) } />
 									<a onClick={ toggleModal } title="Play Trailer" className={ (project.trailer !== undefined) ? '' : 'd-none' }>
 										<FontAwesomeIcon icon={ faPlayCircle } />
 									</a>

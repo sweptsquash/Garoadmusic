@@ -9,10 +9,10 @@ vendor/
 .phpunit.result.cache
 phpunit.xml
 node_modules/
-assets/*
+build/assets/*
+build/index.html
 npm-debug.log
 yarn-error.log
 yarn.lock
 composer.lock
 symfony.lock
-index.html

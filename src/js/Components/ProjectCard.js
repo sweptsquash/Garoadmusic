@@ -2,16 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
+import isSafari from './SafariDetection';
 
 class ProjectCard extends Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			webp: true,
+		};
+	}
+
+	componentDidMount() {
+		if(isSafari()) {
+			this.setState({ webp: false });
+		}
 	}
 
 	render() {
 		return(
-			<a href={ `/music/${ this.props.url }` } className="project parallax" style={{ backgroundImage: `url(${ this.props.background })` }} title={ this.props.name }>
-				<img src={ this.props.logo } alt={ this.props.name } className={'project-logo' + (this.props.logoNoMargin ? ' bottom' : '')} />
+			<a href={ `/music/${ this.props.url }` } className="project parallax" style={{ backgroundImage: `url(${ (this.state.webp) ? this.props.background.webp : this.props.background.png })` }} title={ this.props.name }>
+				<img src={ (this.state.webp) ? this.props.logo.webp : this.props.logo.png } alt={ this.props.name } className={'project-logo' + (this.props.logoNoMargin ? ' bottom' : '')} />
 				<div className="project-icon">
 					<FontAwesomeIcon icon={ faLink } />
 				</div>
@@ -34,8 +45,14 @@ class ProjectCard extends Component {
 ProjectCard.propTypes = {
 	name: PropTypes.string.isRequired,
 	url: PropTypes.string.isRequired,
-	background: PropTypes.string.isRequired,
-	logo: PropTypes.string.isRequired,
+	background: PropTypes.exact({
+		webp: PropTypes.string.isRequired,
+		png: PropTypes.string.isRequired,
+	}),
+	logo: PropTypes.exact({
+		webp: PropTypes.string.isRequired,
+		png: PropTypes.string.isRequired,
+	}),
 	logoNoMargin: PropTypes.bool,
 	quote: PropTypes.string,
 	quoteAuthor: PropTypes.string,

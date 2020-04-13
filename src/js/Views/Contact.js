@@ -11,14 +11,17 @@ import {
 	Input,
 } from 'reactstrap';
 import SEO from '../Components/SEO';
+import isSafari from '../Components/SafariDetection';
 
 import Banner from '../../img/Banner.webp';
+import BannerPNG from '../../img/Banner.png';
 
 class Contact extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			webp: true,
 			isSubmitted: false,
 			isSubmitting: false,
 			hasError: false,
@@ -44,6 +47,12 @@ class Contact extends Component {
 
 		this.submitForm = this.submitForm.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
+	}
+
+	componentDidMount() {
+		if(isSafari()) {
+			this.setState({ webp: false });
+		}
 	}
 
 	submitForm = async e => {
@@ -108,7 +117,7 @@ class Contact extends Component {
 				<Container fluid={true}>
 					<Row className="justify-content-center">
 						<Col xl={ 12 }>
-							<div className="project-banner" style={{ backgroundImage: `url(${ Banner })` }}>
+							<div className="project-banner" style={{ backgroundImage: `url(${ (this.state.webp) ? Banner : BannerPNG })` }}>
 								<h1>Contact Me</h1>
 							</div>
 						</Col>

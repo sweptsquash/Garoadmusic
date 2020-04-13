@@ -10,8 +10,30 @@ import {
 	faPlaystation,
 } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
-import Va11HallaBG from '../img/Va11-hall-aBG.webp';
+
 import Va11HallaBanner from '../img/Va11-hall-aBanner.gif';
+
+/** PNG Formats */
+import Va11HallaBGPNG from '../img/Va11-hall-aBG.png';
+import Va11HallaLogoPNG from '../img/Va11-hall-aLogo.png';
+import YuppieBGPNG from '../img/YuppieBG.png';
+import YuppieBannerPNG from '../img/YuppieBanner.png';
+import YuppieLogoPNG from '../img/YuppieLogo.png';
+import BushidenBGPNG from '../img/BushidenBG.png';
+import BushidenBannerPNG from '../img/BushidenBanner.png';
+import BushidenLogoPNG from '../img/BushidenLogo.png';
+import MichaelPNG from '../img/Michael.png';
+
+import Va11HallaCoverPNG from '../img/Va11HallaCover.png';
+import Va11HallaExCoverPNG from '../img/Va11HallaExCover.png';
+import Va11HallaPrologueCoverPNG from '../img/Va11HallaPrologueCover.png';
+import YuppieCoverPNG from '../img/YuppieCover.png';
+import SukebanCoverPNG from '../img/SukebanCover.png';
+import PassengerCoverPNG from '../img/PassengerCover.png';
+import BlueCoverPNG from '../img/BlueCover.png';
+
+/** WebP Formats */
+import Va11HallaBG from '../img/Va11-hall-aBG.webp';
 import Va11HallaLogo from '../img/Va11-hall-aLogo.webp';
 import YuppieBG from '../img/YuppieBG.webp';
 import YuppieBanner from '../img/YuppieBanner.webp';
@@ -31,7 +53,10 @@ import BlueCover from '../img/BlueCover.webp';
 
 const AboutInfo = {
 	info: <div><p>Michael Kelly is a composer for video games and animation under the moniker &quot;Garoad&quot;. He is best known for composing the soundtracks to the acclaimed VA-11 HALL-A and other games such as Yuppie Psycho and the upcoming Bushiden.</p><p>For each project, Michael takes great care to create a unique, memorable identity through its music and fully immerse players in its world. Having been captivated by video games, Japanese anime, and their soundtracks since a young age, Michael has a thorough understanding of what resonates with players and viewers. </p></div>,
-	image: Michael,
+	image: {
+		webp: Michael,
+		png: MichaelPNG,
+	},
 };
 
 const Projects = [
@@ -41,9 +66,18 @@ const Projects = [
 		developer: 'Subkeban Games',
 		publisher: 'Ysbryd Games, AGM PLAYISM',
 		release: '21 Jun, 2016',
-		background: Va11HallaBG,
-		banner: Va11HallaBanner,
-		logo: Va11HallaLogo,
+		background: {
+			webp: Va11HallaBG,
+			png: Va11HallaBGPNG,
+		},
+		banner: {
+			webp: Va11HallaBanner,
+			png: Va11HallaBanner,
+		},
+		logo: {
+			webp: Va11HallaLogo,
+			png: Va11HallaLogoPNG,
+		},
 		logoNoMargin: false,
 		embed: 'https://bandcamp.com/EmbeddedPlayer/album=2706423874/size=large/bgcol=ffffff/linkcol=333333/artwork=small/transparent=true/',
 		trailer: 'https://www.youtube.com/embed/7x393waFKDw',
@@ -84,9 +118,18 @@ const Projects = [
 		developer: 'Baroque Decay',
 		publisher: 'Another Indie',
 		release: '25 Apr, 2019',
-		background: YuppieBG,
-		banner: YuppieBanner,
-		logo: YuppieLogo,
+		background: {
+			webp: YuppieBG,
+			png:  YuppieBGPNG,
+		},
+		banner: {
+			webp: YuppieBanner,
+			png: YuppieBannerPNG,
+		},
+		logo: {
+			webp: YuppieLogo,
+			png: YuppieLogoPNG,
+		},
 		logoNoMargin: true,
 		embed: 'https://bandcamp.com/EmbeddedPlayer/album=3296452031/size=large/bgcol=ffffff/linkcol=333333/artwork=small/transparent=true/',
 		trailer: 'https://www.youtube.com/embed/h92g7E2WYtc',
@@ -125,9 +168,18 @@ const Projects = [
 		developer: 'Pixel Arc Studios',
 		publisher: 'Pixel Arc Studios',
 		release: '2021',
-		background: BushidenBG,
-		banner: BushidenBanner,
-		logo: BushidenLogo,
+		background: {
+			webp: BushidenBG,
+			png: BushidenBGPNG,
+		},
+		banner: {
+			webp: BushidenBanner,
+			png: BushidenBannerPNG,
+		},
+		logo: {
+			webp: BushidenLogo,
+			png: BushidenLogoPNG,
+		},
 		logoNoMargin: false,
 		embed: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/602766495&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true',
 		trailer: 'https://www.youtube.com/embed/cWb8L6IqZBA',
@@ -151,37 +203,58 @@ const Projects = [
 
 const Albums = [
 	{
-		cover: YuppieCover,
+		cover: {
+			webp: YuppieCover,
+			png: YuppieCoverPNG,
+		},
 		url: 'https://garoad.bandcamp.com/album/yuppie-psycho-original-soundtrack',
 		title: 'Yuppie Psycho Original Soundtrack',
 	},
 	{
-		cover: Va11HallaCover,
+		cover: {
+			webp: Va11HallaCover,
+			png: Va11HallaCoverPNG,
+		},
 		url: 'https://garoad.bandcamp.com/album/va-11-hall-a-second-round',
 		title: 'VA011 HALL-A - Second Round',
 	},
 	{
-		cover: Va11HallaPrologueCover,
+		cover: {
+			webp: Va11HallaPrologueCover,
+			png: Va11HallaPrologueCoverPNG,
+		},
 		url: 'https://garoad.bandcamp.com/album/va-11-hall-a-prologue-ost-sounds-from-the-future',
 		title: 'VA-11 HALL-A Prologue OST - Sounds From The Future',
 	},
 	{
-		cover: Va11HallaExCover,
+		cover: {
+			webp: Va11HallaExCover,
+			png: Va11HallaExCoverPNG,
+		},
 		url: 'https://garoad.bandcamp.com/album/va-11-hall-a-ex-bonus-tracks-collection',
 		title: 'VA-11 HALL-A EX - Bonus Tracks Collection',
 	},
 	{
-		cover: PassengerCover,
+		cover: {
+			webp: PassengerCover,
+			png: PassengerCoverPNG,
+		},
 		url: 'https://garoad.bandcamp.com/album/passenger-ep',
 		title: 'Passenger EP',
 	},
 	{
-		cover: BlueCover,
+		cover: {
+			webp: BlueCover,
+			png: BlueCoverPNG,
+		},
 		url: 'https://garoad.bandcamp.com/album/blue',
 		title: 'Blue',
 	},
 	{
-		cover: SukebanCover,
+		cover: {
+			webp: SukebanCover,
+			png: SukebanCoverPNG,
+		},
 		url: 'https://garoad.bandcamp.com/album/sukeban-ep',
 		title: 'Sukeban EP',
 	},

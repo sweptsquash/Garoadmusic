@@ -17,17 +17,17 @@ module.exports = env => {
 			}),
 			new HtmlWebpackPlugin({
 				template: path.resolve(__dirname, 'src/index.html'),
-				filename: path.resolve(__dirname) + '/index.html',
+				filename: path.resolve(__dirname) + '/build/index.html',
 			}),
 			new CopyPlugin([
 				{
 					from: path.resolve(__dirname, 'src/img/icons'),
-					to: path.resolve(__dirname, 'assets/img/icons'),
+					to: path.resolve(__dirname, 'build/assets/img/icons'),
 				},
 			]),
 		],
 		output: {
-			path: path.resolve(__dirname, 'assets'),
+			path: path.resolve(__dirname, 'build/assets'),
 			filename: '[name].[hash].js',
 			chunkFilename: '[name].[hash].js',
 		},
@@ -104,7 +104,9 @@ module.exports = env => {
 			],
 		},
 		devServer: {
-			publicPath: path.resolve(__dirname, 'dist'),
+			contentBase: path.resolve(__dirname, 'build'),
+			publicPath: path.resolve(__dirname, 'build'),
+			serveIndex: true,
 			compress: true,
 			writeToDisk: true,
 			historyApiFallback: true,

@@ -36,7 +36,7 @@ The projects source files can be found under the folder labelled `src`
 
 **Production Ready**
 
-If you've modified the site's source code and want to deploy an update simply run the command `yarn build` this will output optimized assets into the `assets` folder and also update `index.html` with the new references. You'll thank want to upload both the contents of `assets` and `index.html` to your websites FTP.
+If you've modified the site's source code and want to deploy an update simply run the command `yarn build` this will output optimized assets into the `build/assets` folder and also update `build/index.html` with the new references. You'll thank want to upload both the contents of `assets` and `index.html` located in the `build` folder to the root directory of your websites FTP.
 
 **Project Configuration**
 
