@@ -18,6 +18,8 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
+        $project->load(['media', 'albums.media']);
+
         return inertia('projects/show', [
             'project' => ProjectResource::make($project),
         ]);

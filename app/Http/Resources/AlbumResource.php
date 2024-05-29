@@ -12,8 +12,23 @@ class AlbumResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'url' => $this->url,
-            'cover' => $this->getFirstMediaUrl('cover'),
+            'cover' => $this->getImages($this->getFirstMedia('cover')),
             'project' => ProjectResource::make($this->whenLoaded('project')),
+        ];
+    }
+
+    private function getImages($media): array
+    {
+        if (! $media) {
+            return [
+                'original' => null,
+                'webp' => null,
+            ];
+        }
+
+        return [
+            'original' => $media->getUrl(),
+            'webp' => $media->getUrk('webp'),
         ];
     }
 }

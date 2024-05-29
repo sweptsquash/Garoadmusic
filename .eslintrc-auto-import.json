@@ -290,6 +290,7 @@
     "watchTriggerable": true,
     "watchWithFilter": true,
     "whenever": true,
-    "useIsWebpSupported": true
+    "useIsWebpSupported": true,
+    "useDayJs": true
   }
 }

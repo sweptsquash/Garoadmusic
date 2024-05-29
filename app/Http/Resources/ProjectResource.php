@@ -22,9 +22,25 @@ class ProjectResource extends JsonResource
             'quote' => $this->quote,
             'quote_author' => $this->quote_author,
             'links' => $this->links,
-            'cover' => $this->getFirstMediaUrl('cover'),
-            'banner' => $this->getFirstMediaUrl('banner'),
-            'logo' => $this->getFirstMediaUrl('logo'),
+            'albums' => AlbumResource::collection($this->whenLoaded('albums')),
+            'cover' => $this->getImages($this->getFirstMedia('cover')),
+            'banner' => $this->getImages($this->getFirstMedia('banner')),
+            'logo' => $this->getImages($this->getFirstMedia('logo')),
+        ];
+    }
+
+    private function getImages($media): array
+    {
+        if (! $media) {
+            return [
+                'original' => null,
+                'webp' => null,
+            ];
+        }
+
+        return [
+            'original' => $media->getUrl(),
+            'webp' => $media->getUrk('webp'),
         ];
     }
 }

@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'contact_form' => [
+        'email' => env('CONTACT_FORM_EMAIL'),
+        'name' => env('CONTACT_FORM_NAME'),
+    ],
+
 ];

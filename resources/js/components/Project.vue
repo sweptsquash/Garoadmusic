@@ -11,14 +11,10 @@ const props = defineProps({
     <InertiaLink :href="`/projects/${project.slug}`" class="project" :title="project.name">
         <div
             class="background"
-            style="
-                background-image: url('https://garoadmusic.com/assets/img/BushidenBG.98383c1f9d6010b33d8b73671d968989.webp');
-            "
+            :style="`background-image: url('${!useIsWebpSupported() ? project.cover.original : project.cover.webp}');`"
         ></div>
         <div class="logo">
-            <img
-                src="https://garoadmusic.com/assets/img/YuppieLogo.8116239aafa02f3e1b2f3990031376eb.webp"
-            />
+            <img :src="!useIsWebpSupported() ? project.logo.original : project.logo.webp" />
         </div>
         <div class="info">
             <p class="mb-2 text-lg font-bold">{{ project.name }}</p>
