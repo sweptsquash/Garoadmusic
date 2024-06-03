@@ -2,16 +2,16 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ContactResource\Pages;
-use App\Models\Contact;
+use App\Filament\Resources\MessageResource\Pages;
+use App\Models\Message;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class ContactResource extends Resource
+class MessageResource extends Resource
 {
-    protected static ?string $model = Contact::class;
+    protected static ?string $model = Message::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -52,9 +52,8 @@ class ContactResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListContacts::route('/'),
-            'create' => Pages\CreateContact::route('/create'),
-            'edit' => Pages\EditContact::route('/{record}/edit'),
+            'index' => Pages\ListMessages::route('/'),
+            'edit' => Pages\EditMessage::route('/{record}/edit'),
         ];
     }
 }
