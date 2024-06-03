@@ -82,6 +82,10 @@ body {
         @apply ease-in-out duration-300;
     }
 
+    & > .cover > img {
+        @apply w-full h-auto block;
+    }
+
     & > .info {
         @apply absolute bottom-[-100px] p-2 w-full bg-neutral;
     }

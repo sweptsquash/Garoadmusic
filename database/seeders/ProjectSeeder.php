@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Album;
 use App\Models\Project;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -13,6 +14,42 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
+        $albums = collect([
+            [
+                'name' => 'Sukeban EP',
+                'url' => 'https://garoad.bandcamp.com/album/sukeban-ep',
+                'image' => 'https://f4.bcbits.com/img/a2192495570_2.jpg',
+            ],
+            [
+                'name' => 'Blue',
+                'url' => 'https://garoad.bandcamp.com/album/blue',
+                'image' => 'https://f4.bcbits.com/img/a3649387320_2.jpg',
+            ],
+            [
+                'name' => 'From My Star to Yours',
+                'url' => 'https://garoad.bandcamp.com/track/from-my-star-to-yours',
+                'image' => 'https://f4.bcbits.com/img/a3649328883_2.jpg',
+            ],
+            [
+                'name' => 'Fight on Beat',
+                'url' => 'https://garoad.bandcamp.com/track/fight-on-beat',
+                'image' => 'https://f4.bcbits.com/img/a3655819671_2.jpg',
+            ],
+            [
+                'name' => 'Passenger EP',
+                'url' => 'https://garoad.bandcamp.com/album/passenger-ep',
+                'image' => 'https://f4.bcbits.com/img/a3866060443_2.jpg',
+            ],
+        ]);
+
+        $albums->each(function ($album) {
+            $albumModel = Album::create(Arr::except($album, 'image'));
+
+            if (Arr::has($album, 'image')) {
+                $albumModel->addMediaFromUrl(Arr::get($album, 'image'))->toMediaCollection('cover');
+            }
+        });
+
         $data = collect([
             [
                 'name' => 'Bushiden',
@@ -21,9 +58,9 @@ class ProjectSeeder extends Seeder
                 'developer' => 'Pixel Arc Studios',
                 'publisher' => 'Pixel Arc Studios',
                 'release_date' => null,
-                'soundcloud_embed_url' => 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/602766495&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true',
+                'bandcamp_embed_url' => 'https://bandcamp.com/EmbeddedPlayer/album=4235610369/size=large/bgcol=333333/linkcol=ffffff/transparent=true/',
                 'youtube_embed_url' => 'https://www.youtube.com/embed/cWb8L6IqZBA',
-                'quote' => 'To be released 2021.',
+                'quote' => null,
                 'quote_author' => null,
                 'links' => [
                     [
@@ -37,7 +74,13 @@ class ProjectSeeder extends Seeder
                         'url' => 'https://store.steampowered.com/app/1046920/Bushiden/',
                     ],
                 ],
-                'albums' => [],
+                'albums' => [
+                    [
+                        'name' => 'Bushiden Original Soundtrack',
+                        'url' => 'https://garoad.bandcamp.com/album/bushiden-original-soundtrack',
+                        'image' => 'https://f4.bcbits.com/img/a0567786752_2.jpg',
+                    ],
+                ],
             ],
             [
                 'name' => 'Catechesis',
@@ -46,6 +89,8 @@ class ProjectSeeder extends Seeder
                 'developer' => 'Baroque Decay',
                 'publisher' => 'Baroque Decay',
                 'release_date' => null,
+                'show_logo' => false,
+                'bandcamp_embed_url' => 'https://bandcamp.com/EmbeddedPlayer/album=1974879065/size=large/bgcol=333333/linkcol=ffffff/transparent=true/',
                 'youtube_embed_url' => 'https://www.youtube.com/embed/MvCPf9B6J3Y',
                 'links' => [
                     [
@@ -63,6 +108,7 @@ class ProjectSeeder extends Seeder
                     [
                         'name' => 'Catechesis - EP',
                         'url' => 'https://garoad.bandcamp.com/album/catechesis-ep',
+                        'image' => 'https://f4.bcbits.com/img/a2906050615_2.jpg',
                     ],
                 ],
             ],
@@ -98,6 +144,7 @@ class ProjectSeeder extends Seeder
                     [
                         'name' => 'Yuppie Psycho - Original Soundtrack',
                         'url' => 'https://garoad.bandcamp.com/album/yuppie-psycho-original-soundtrack',
+                        'image' => 'https://f4.bcbits.com/img/a2922336606_2.jpg',
                     ],
                 ],
             ],
@@ -143,23 +190,32 @@ class ProjectSeeder extends Seeder
                     [
                         'name' => 'VA-11 HALL-A - Second Round',
                         'url' => 'https://garoad.bandcamp.com/album/va-11-hall-a-second-round',
+                        'image' => 'https://f4.bcbits.com/img/a1141700252_2.jpg',
                     ],
                     [
                         'name' => 'VA-11 HALL-A Prologue OST - Sounds From The Future',
                         'url' => 'https://garoad.bandcamp.com/album/va-11-hall-a-prologue-ost-sounds-from-the-future',
+                        'image' => 'https://f4.bcbits.com/img/a4291670717_2.jpg',
                     ],
                     [
                         'name' => 'VA-11 HALL-A EX - Bonus Tracks Collection',
                         'url' => 'https://garoad.bandcamp.com/album/va-11-hall-a-ex-bonus-tracks-collection',
+                        'image' => 'https://f4.bcbits.com/img/a3878063584_2.jpg',
                     ],
                 ],
             ],
         ]);
 
-        $data->each(function ($project) {
+        $data->reverse()->each(function ($project) {
             $projectModel = Project::create(Arr::except($project, 'albums'));
 
-            collect($project['albums'])->each(fn ($album) => $projectModel->albums()->create($album));
+            collect($project['albums'])->each(function ($album) use ($projectModel) {
+                $albumModel = $projectModel->albums()->create(Arr::except($album, 'image'));
+
+                if (Arr::has($album, 'image')) {
+                    $albumModel->addMediaFromUrl(Arr::get($album, 'image'))->toMediaCollection('cover');
+                }
+            });
         });
     }
 }

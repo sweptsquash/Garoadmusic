@@ -4,29 +4,13 @@ import X from '@/components/Icons/X.vue'
 import Youtube from '@/components/Icons/Youtube.vue'
 import Spotify from '@/components/Icons/Spotify.vue'
 import Bandcamp from '@/components/Icons/Bandcamp.vue'
-import Soundcloud from '@/components/Icons/Soundcloud.vue'
 
 const copyrightYear = ref(new Date().getFullYear())
 
 const navigation = [
     {
-        name: 'Facebook',
-        href: 'https://www.facebook.com/garoadmusic/',
-        icon: Facebook,
-    },
-    {
-        name: 'X',
-        href: 'https://x.com/garoadmusic',
-        icon: X,
-    },
-    {
-        name: 'YouTube',
-        href: 'https://www.youtube.com/user/garoad',
-        icon: Youtube,
-    },
-    {
         name: 'Spotify',
-        href: 'https://www.tiktok.com/@senshudotv',
+        href: 'https://open.spotify.com/artist/1oMOdABcJgXgiplesecR1U',
         icon: Spotify,
     },
     {
@@ -35,9 +19,19 @@ const navigation = [
         icon: Bandcamp,
     },
     {
-        name: 'Soundcloud',
-        href: 'https://soundcloud.com/garoadmusic',
-        icon: Soundcloud,
+        name: 'YouTube',
+        href: 'https://www.youtube.com/user/garoad',
+        icon: Youtube,
+    },
+    {
+        name: 'X',
+        href: 'https://x.com/garoadmusic',
+        icon: X,
+    },
+    {
+        name: 'Facebook',
+        href: 'https://www.facebook.com/garoadmusic/',
+        icon: Facebook,
     },
 ]
 </script>

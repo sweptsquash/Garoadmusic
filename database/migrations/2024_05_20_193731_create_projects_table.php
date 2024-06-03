@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('quote')->nullable();
             $table->string('quote_author')->nullable();
             $table->json('links')->nullable();
+            $table->boolean('show_logo')->default(true);
 
             $table->timestamps();
         });

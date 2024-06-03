@@ -13,7 +13,7 @@ const props = defineProps({
             class="background"
             :style="`background-image: url('${!useIsWebpSupported() ? project.cover.original : project.cover.webp}');`"
         ></div>
-        <div class="logo">
+        <div v-if="project.showLogo" class="logo">
             <img :src="!useIsWebpSupported() ? project.logo.original : project.logo.webp" />
         </div>
         <div class="info">

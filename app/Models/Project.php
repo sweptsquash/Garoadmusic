@@ -31,11 +31,13 @@ class Project extends Model implements HasMedia
         'quote',
         'quote_author',
         'links',
+        'show_logo',
     ];
 
     protected $casts = [
         'release_date' => 'datetime',
         'links' => 'array',
+        'show_logo' => 'boolean',
     ];
 
     /**

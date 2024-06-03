@@ -26,6 +26,7 @@ class ProjectResource extends JsonResource
             'cover' => $this->getImages($this->getFirstMedia('cover')),
             'banner' => $this->getImages($this->getFirstMedia('banner')),
             'logo' => $this->getImages($this->getFirstMedia('logo')),
+            'show_logo' => $this->show_logo,
         ];
     }
 
@@ -40,7 +41,7 @@ class ProjectResource extends JsonResource
 
         return [
             'original' => $media->getUrl(),
-            'webp' => $media->getUrk('webp'),
+            'webp' => $media->getUrl('webp'),
         ];
     }
 }

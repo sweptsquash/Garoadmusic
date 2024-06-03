@@ -28,7 +28,7 @@ class AlbumResource extends JsonResource
 
         return [
             'original' => $media->getUrl(),
-            'webp' => $media->getUrk('webp'),
+            'webp' => $media->getUrl('webp'),
         ];
     }
 }
