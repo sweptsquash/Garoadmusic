@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProjectResource extends JsonResource
 {
@@ -30,7 +31,7 @@ class ProjectResource extends JsonResource
         ];
     }
 
-    private function getImages($media): array
+    private function getImages(?Media $media): array
     {
         if (! $media) {
             return [
@@ -41,7 +42,7 @@ class ProjectResource extends JsonResource
 
         return [
             'original' => $media->getUrl(),
-            'webp' => $media->getUrl('webp'),
+            'webp' => $media->hasGeneratedConversion('webp') ? $media->getUrl('webp') : null,
         ];
     }
 }

@@ -1,35 +1,23 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\ProjectResource\RelationManagers;
 
-use App\Filament\Resources\AlbumResource\Pages;
-use App\Models\Album;
-use App\Models\Project;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Validation\Rules\File;
 
-class AlbumResource extends Resource
+class AlbumsRelationManager extends RelationManager
 {
-    protected static ?string $model = Album::class;
+    protected static string $relationship = 'albums';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    public static function form(Form $form): Form
+    public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Select::make('project_id')
-                    ->label('Project')
-                    ->options(Project::all()->pluck('name', 'id'))
-                    ->searchable()
-                    ->columnSpanFull(),
-
                 TextInput::make('name')
                     ->required()
                     ->minLength(3)
@@ -55,45 +43,27 @@ class AlbumResource extends Resource
             ]);
     }
 
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
+            ->recordTitleAttribute('name')
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
-
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('name'),
             ])
             ->filters([
                 //
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListAlbums::route('/'),
-            'create' => Pages\CreateAlbum::route('/create'),
-            'edit' => Pages\EditAlbum::route('/{record}/edit'),
-        ];
     }
 }

@@ -28,7 +28,11 @@ const embedUrl = computed(() => {
             class="relative isolate -mx-6 -mt-6 min-h-[40vh] overflow-hidden bg-neutral px-6 py-24 sm:py-32 lg:px-8"
         >
             <img
-                :src="!useIsWebpSupported() ? project.banner.original : project.banner.webp"
+                :src="
+                    !useIsWebpSupported() || project.banner.webp === null
+                        ? project.banner.original
+                        : project.banner.webp
+                "
                 alt=""
                 class="absolute inset-0 -z-10 h-full w-full object-cover"
             />
@@ -42,7 +46,11 @@ const embedUrl = computed(() => {
                     <Play class="inline-block h-24 w-24" />
                 </a>
                 <img
-                    :src="!useIsWebpSupported() ? project.logo.original : project.logo.webp"
+                    :src="
+                        !useIsWebpSupported() || project.logo.webp === null
+                            ? project.logo.original
+                            : project.logo.webp
+                    "
                     alt=""
                     class="mx-auto h-32 w-auto"
                 />

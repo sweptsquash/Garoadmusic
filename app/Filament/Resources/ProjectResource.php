@@ -98,7 +98,6 @@ class ProjectResource extends Resource
 
                 TinyEditor::make('quote')
                     ->setConvertUrls(false)
-                    ->required()
                     ->columnSpanFull(),
 
                 TextInput::make('quote_author')
@@ -150,7 +149,7 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ProjectResource\RelationManagers\AlbumsRelationManager::class,
         ];
     }
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('subject');
             $table->text('message');
-            $table->ipAddress();
+            $table->ipAddress()->nullable();
             $table->timestamps();
         });
     }

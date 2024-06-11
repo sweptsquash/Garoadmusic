@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Message;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -15,7 +16,7 @@ class ContactForm extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private readonly array $data)
+    public function __construct(private readonly Message $message)
     {
         //
     }
@@ -38,7 +39,10 @@ class ContactForm extends Mailable
         return new Content(
             markdown: 'mail.contact-form',
             with: [
-                ...$this->data,
+                'name' => $this->message->name,
+                'email' => $this->message->email,
+                'subject' => $this->message->subject,
+                'message' => $this->message->message,
             ],
         );
     }

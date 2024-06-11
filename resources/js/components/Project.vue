@@ -11,10 +11,16 @@ const props = defineProps({
     <InertiaLink :href="`/projects/${project.slug}`" class="project" :title="project.name">
         <div
             class="background"
-            :style="`background-image: url('${!useIsWebpSupported() ? project.cover.original : project.cover.webp}');`"
+            :style="`background-image: url('${!useIsWebpSupported() || project.cover.webp === null ? project.cover.original : project.cover.webp}');`"
         ></div>
-        <div v-if="project.showLogo" class="logo">
-            <img :src="!useIsWebpSupported() ? project.logo.original : project.logo.webp" />
+        <div v-if="project.show_logo" class="logo">
+            <img
+                :src="
+                    !useIsWebpSupported() || project.logo.webp === null
+                        ? project.logo.original
+                        : project.logo.webp
+                "
+            />
         </div>
         <div class="info">
             <p class="mb-2 text-lg font-bold">{{ project.name }}</p>
