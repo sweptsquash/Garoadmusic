@@ -6,8 +6,8 @@
     "keywords": ["laravel", "framework"],
     "require": {
         "php": "^8.2",
-        "filament/filament": "^3.2.87",
-        "filament/spatie-laravel-media-library-plugin": "^3.2.87",
+        "filament/filament": "^3.2.88",
+        "filament/spatie-laravel-media-library-plugin": "^3.2.88",
         "inertiajs/inertia-laravel": "^1.2",
         "laravel/framework": "^11.10.0",
         "laravel/tinker": "^2.9",
