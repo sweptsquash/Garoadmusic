@@ -1,0 +1,109 @@
+@import url('fonts.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    @apply h-full w-full;
+}
+
+body {
+    @apply h-full w-full font-sans antialiased bg-base-100 text-base-content;
+}
+
+.text-bebas {
+    font-family: 'Bebas Neue', cursive;
+}
+
+.h-body {
+    min-height: calc(100vh - 184px);
+}
+
+
+.projects {
+    min-height: calc(100vh - (184px + 3rem));
+}
+
+.project {
+    @apply block w-full rounded-md shadow-md h-full bg-neutral relative ease-in-out duration-300 overflow-hidden;
+
+    & > .background {
+        @apply h-full w-full block absolute z-[0] bg-cover;
+
+        &::before {
+            content: "";
+            @apply bg-neutral/25 h-full w-full opacity-0 block absolute z-[1];
+        }
+    }
+
+    & > * {
+        @apply ease-in-out duration-300;
+    }
+
+    & > .logo {
+        transform-origin: center;
+        @apply z-[2] absolute bottom-0 w-full;
+    }
+
+    & > .logo > img {
+        @apply max-w-[50%] h-auto w-full mx-auto;
+    }
+
+    & > .info {
+        @apply w-full h-[200px] bg-neutral p-4 absolute bottom-[-200px] left-0 text-white;
+    }
+
+    &:hover,
+    &:focus {
+        & > .background {
+            background-position: 50% 90%;
+            @apply blur-[1px];
+
+            &::before {
+                @apply opacity-100;
+            }
+        }
+
+        & > .logo {
+            @apply bottom-[200px];
+        }
+
+        & > .info {
+            @apply ease-in-out duration-300 bottom-0;
+        }
+    }
+}
+
+.album {
+    @apply rounded-md shadow-md block h-auto overflow-hidden relative bg-neutral;
+
+    & > * {
+        @apply ease-in-out duration-300;
+    }
+
+    & > .cover > img {
+        @apply w-full h-auto block;
+    }
+
+    & > .info {
+        @apply absolute bottom-[-100px] p-2 w-full bg-neutral;
+    }
+
+    &:hover,
+    &:focus {
+        & > .cover > img {
+            @apply scale-105;
+        }
+
+        & > .info {
+            @apply top-auto bottom-0;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .project {
+        height: calc(100vh - 232px);
+    }
+}
