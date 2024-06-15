@@ -29,7 +29,7 @@ body {
     @apply block w-full rounded-md shadow-md h-full bg-neutral relative ease-in-out duration-300 overflow-hidden;
 
     & > .background {
-        @apply h-full w-full block absolute z-[0] bg-cover;
+        @apply h-full w-full block absolute z-[0] bg-cover bg-center;
 
         &::before {
             content: "";
