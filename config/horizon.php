@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'middleware' => ['web', 'auth.very_basic'],
+    'middleware' => ['web', 'auth.very_basic:'.env('BASIC_AUTH_USERNAME', '').','.env('BASIC_AUTH_PASSWORD', '')],
 
     /*
     |--------------------------------------------------------------------------

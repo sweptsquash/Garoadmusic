@@ -19,6 +19,11 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
         ]);
     })
+    ->withProviders([
+        App\Providers\AppServiceProvider::class,
+        App\Providers\Filament\AdminPanelProvider::class,
+        App\Providers\HorizonServiceProvider::class,
+    ])
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->respond(function (Response $response, Throwable $exception, Request $request) {
             if ($request->routeIs('filament.admin.*')) {
