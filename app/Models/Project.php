@@ -11,9 +11,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-/**
- * @mixin IdeHelperProject
- */
 class Project extends Model implements HasMedia
 {
     use HasFactory, HasSlug, InteractsWithMedia;
@@ -68,6 +65,7 @@ class Project extends Model implements HasMedia
             ->format('webp');
     }
 
+    /** @return HasMany<Album> */
     public function albums(): HasMany
     {
         return $this->hasMany(Album::class);

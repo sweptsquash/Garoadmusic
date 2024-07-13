@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
+/** @mixin \App\Models\Project */
 class ProjectResource extends JsonResource
 {
     public function toArray($request)

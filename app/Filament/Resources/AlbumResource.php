@@ -26,7 +26,7 @@ class AlbumResource extends Resource
             ->schema([
                 Select::make('project_id')
                     ->label('Project')
-                    ->options(Project::all()->pluck('name', 'id'))
+                    ->options(Project::select('name', 'id')->get())
                     ->searchable()
                     ->columnSpanFull(),
 

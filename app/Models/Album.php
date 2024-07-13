@@ -9,9 +9,6 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-/**
- * @mixin IdeHelperAlbum
- */
 class Album extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
@@ -34,6 +31,7 @@ class Album extends Model implements HasMedia
             ->format('webp');
     }
 
+    /** @return BelongsTo<Project, self> */
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
