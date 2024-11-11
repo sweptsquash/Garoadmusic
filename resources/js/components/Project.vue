@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
     project: {
         type: Object,
         required: true,
@@ -25,7 +25,7 @@ const props = defineProps({
         <div class="info">
             <p class="mb-2 text-lg font-bold">{{ project.name }}</p>
             <blockquote>{{ project.quote }}</blockquote>
-            <figcaption class="mt-1 text-gray-400">{{ project.quote_author }}</figcaption>
+            <span class="mt-1 text-gray-400">{{ project.quote_author }}</span>
         </div>
     </InertiaLink>
 </template>

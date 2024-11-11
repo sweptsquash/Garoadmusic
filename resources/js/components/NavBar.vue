@@ -1,6 +1,7 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { onBeforeMount, ref } from 'vue'
 
 const route = useRoute()
 

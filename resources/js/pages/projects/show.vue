@@ -1,6 +1,7 @@
 <script setup>
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { isEmpty } from 'lodash'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
     project: {

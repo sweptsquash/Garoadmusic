@@ -1,5 +1,6 @@
 <script setup>
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
+import { reactive, watch } from 'vue'
 
 const props = defineProps({
     meta: {

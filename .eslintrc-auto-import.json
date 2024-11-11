@@ -291,6 +291,13 @@
     "watchWithFilter": true,
     "whenever": true,
     "useIsWebpSupported": true,
-    "useDayJs": true
+    "useDayJs": true,
+    "DirectiveBinding": true,
+    "MaybeRef": true,
+    "MaybeRefOrGetter": true,
+    "onWatcherCleanup": true,
+    "useId": true,
+    "useModel": true,
+    "useTemplateRef": true
   }
 }

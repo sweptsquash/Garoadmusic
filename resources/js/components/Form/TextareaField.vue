@@ -1,5 +1,6 @@
 <script setup>
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid'
+import { computed } from 'vue'
 
 const props = defineProps({
     id: {
