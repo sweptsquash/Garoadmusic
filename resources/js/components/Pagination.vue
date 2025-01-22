@@ -1,19 +1,28 @@
-<script setup>
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
-import { reactive, watch } from 'vue'
+<script lang="ts" setup>
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid/index.js'
 
-const props = defineProps({
-    meta: {
-        type: Object,
-        required: true,
+const props = withDefaults(
+    defineProps<{
+        meta: App.PageMeta
+        range?: number
+    }>(),
+    {
+        range: 10,
     },
-    range: {
-        type: Number,
-        default: 10,
-    },
-})
+)
 
-const data = reactive({
+const data = reactive<{
+    page: {
+        first: number
+        current: number
+        previous: number
+        next: number
+        last: number
+        min: number
+        max: number
+        range: { [key: number]: number }
+    }
+}>({
     page: {
         first: 1,
         current: 1,
@@ -29,8 +38,8 @@ const data = reactive({
 watch(() => props.meta, calcPageRange, { deep: true, immediate: true })
 
 function calcPageRange() {
-    let previousPage = props.meta?.current_page - 1
-    let nextPage = props.meta?.current_page + 1
+    let previousPage: number = props.meta?.current_page - 1
+    let nextPage: number = props.meta?.current_page + 1
 
     const maxPagesBeforeCurrentPage = Math.floor(props.range / 2)
     const maxPagesAfterCurrentPage = Math.floor(props.range / 2) - 1

@@ -1,39 +1,25 @@
-<script setup>
+<script lang="ts" setup>
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid'
 import { computed } from 'vue'
 
-const props = defineProps({
-    id: {
-        type: String,
-        required: true,
+const props = withDefaults(
+    defineProps<{
+        id: string
+        name: string
+        type?: string
+        placeholder?: string
+        error?: string
+        label?: string
+    }>(),
+    {
+        type: 'text',
+        placeholder: undefined,
+        error: undefined,
+        label: undefined,
     },
-    name: {
-        type: String,
-        required: true,
-    },
-    type: {
-        type: String,
-        required: false,
-        default: 'text',
-    },
-    placeholder: {
-        type: String,
-        required: false,
-        default: undefined,
-    },
-    error: {
-        type: String,
-        required: false,
-        default: undefined,
-    },
-    label: {
-        type: String,
-        required: false,
-        default: undefined,
-    },
-})
+)
 
-const model = defineModel({ type: String, default: '' })
+const model = defineModel<string>()
 
 const hasError = computed(() => !!props.error)
 </script>

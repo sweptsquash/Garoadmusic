@@ -1,6 +1,8 @@
-<script setup>
-import Michael from '@/../images/Michael.png'
+<script lang="ts" setup>
+import MichaelPng from '@/../images/Michael.png'
 import MichaelWebp from '@/../images/Michael.webp'
+
+onMounted(() => {})
 </script>
 
 <template>
@@ -9,7 +11,7 @@ import MichaelWebp from '@/../images/Michael.webp'
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div
                 class="relative min-h-[30vh] overflow-hidden rounded-md bg-neutral bg-cover bg-center bg-no-repeat px-6 pb-9 pt-64 shadow-md sm:px-12 lg:min-h-[60vh] lg:px-8 lg:pb-8 xl:px-10 xl:pb-10"
-                :style="`background-image: url(${useIsWebpSupported() ? MichaelWebp : Michael});`"
+                :style="`background-image: url(${useIsWebpSupported() ? MichaelWebp : MichaelPng});`"
             >
                 <p class="text-bebas block text-center text-2xl font-bold text-white md:hidden">
                     Michael Kelly

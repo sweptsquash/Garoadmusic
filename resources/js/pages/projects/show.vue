@@ -1,23 +1,20 @@
-<script setup>
+<script lang="ts" setup>
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { isEmpty } from 'lodash'
-import { computed, ref } from 'vue'
 
-const props = defineProps({
-    project: {
-        type: Object,
-        required: true,
-    },
-})
+const props = defineProps<{ project: App.Project }>()
 
 const isModalOpen = ref(false)
 
 const hasEmbed = computed(() => {
-    return !isEmpty(props.project.bandcamp_embed_url) || !isEmpty(props.project.youtube_embed_url)
+    return (
+        (props.project.bandcamp_embed_url && !isEmpty(props.project.bandcamp_embed_url)) ||
+        (props.project.youtube_embed_url && !isEmpty(props.project.youtube_embed_url))
+    )
 })
 
 const embedUrl = computed(() => {
-    return props.project.bandcamp_embed_url || props.project.youtube_embed_url
+    return props.project.bandcamp_embed_url || props.project.youtube_embed_url || ''
 })
 </script>
 
@@ -29,6 +26,7 @@ const embedUrl = computed(() => {
             class="relative isolate -mx-6 -mt-6 min-h-[40vh] overflow-hidden bg-neutral px-6 py-24 sm:py-32 lg:px-8"
         >
             <img
+                v-if="project.banner.original"
                 :src="
                     !useIsWebpSupported() || project.banner.webp === null
                         ? project.banner.original
@@ -47,6 +45,7 @@ const embedUrl = computed(() => {
                     <Play class="inline-block h-24 w-24" />
                 </a>
                 <img
+                    v-if="project.logo.original"
                     :src="
                         !useIsWebpSupported() || project.logo.webp === null
                             ? project.logo.original
@@ -77,11 +76,11 @@ const embedUrl = computed(() => {
                             : 'TBA'
                     }}
                 </p>
-                <template v-if="project.links.length">
+                <template v-if="project.links && project.links.length">
                     <div class="flex w-full max-w-full flex-row flex-wrap gap-4">
                         <a
-                            v-for="link in project.links"
-                            :key="link.id"
+                            v-for="(link, index) in project.links"
+                            :key="`link-${index}`"
                             :href="link.url"
                             class="flex rounded-md border p-4 shadow-md hover:bg-base-100 focus:bg-base-100"
                             :title="link.name"
@@ -97,7 +96,10 @@ const embedUrl = computed(() => {
                     v-html="project.description"
                 ></div>
             </div>
-            <div v-if="project.albums.length" class="flex-0 relative block w-full">
+            <div
+                v-if="project.albums && project.albums.length"
+                class="flex-0 relative block w-full"
+            >
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                     <Album v-for="(album, index) in project.albums" :key="index" :album="album" />
                 </div>
