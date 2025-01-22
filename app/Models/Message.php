@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 #[ObservedBy(MessageObserver::class)]
+/**
+ * @mixin IdeHelperMessage
+ */
 class Message extends Model
 {
     use HasFactory;
