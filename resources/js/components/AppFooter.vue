@@ -1,10 +1,9 @@
-<script setup>
+<script lang="ts" setup>
 import Bandcamp from '@/components/Icons/Bandcamp.vue'
 import Facebook from '@/components/Icons/Facebook.vue'
 import Spotify from '@/components/Icons/Spotify.vue'
 import X from '@/components/Icons/X.vue'
 import Youtube from '@/components/Icons/Youtube.vue'
-import { ref } from 'vue'
 
 const copyrightYear = ref(new Date().getFullYear())
 

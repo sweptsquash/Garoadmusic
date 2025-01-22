@@ -1,7 +1,6 @@
-<script setup>
+<script lang="ts" setup>
 import socialBanner from '@/../images/GaroadSocial.png'
 import { usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
 
 const props = defineProps({
     title: {

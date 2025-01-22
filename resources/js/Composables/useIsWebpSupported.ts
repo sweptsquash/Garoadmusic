@@ -1,6 +1,4 @@
-import { usePage } from '@inertiajs/vue3'
-
-export function useIsWebpSupported() {
+export function useIsWebpSupported(): boolean {
     if (usePage().props.isWebpSupported) {
         return true
     }

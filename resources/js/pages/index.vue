@@ -1,10 +1,5 @@
-<script setup>
-defineProps({
-    projects: {
-        type: Array,
-        required: true,
-    },
-})
+<script lang="ts" setup>
+defineProps<{ projects: App.Project[] }>()
 </script>
 
 <template>

@@ -1,6 +1,4 @@
-<script setup>
-import { ref } from 'vue'
-
+<script lang="ts" setup>
 const form = useForm({
     name: '',
     email: '',
@@ -12,10 +10,10 @@ const isProcessing = ref(false)
 
 const displaySuccess = ref(false)
 
-const submitForm = () => {
+function submitForm() {
     isProcessing.value = true
 
-    form.post('/contact', {
+    form.post(route('contact.store'), {
         onSuccess: () => {
             form.reset()
             isProcessing.value = false

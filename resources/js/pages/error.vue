@@ -1,15 +1,8 @@
-<script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
-    status: {
-        type: Number,
-        required: true,
-    },
-})
+<script lang="ts" setup>
+const props = defineProps<{ status: number }>()
 
 const errorHeaderTitle = computed(() => {
-    const statuses = {
+    const statuses: { [key: number]: string } = {
         503: '503: Service Unavailable',
         500: '500: Server Error',
         404: '404: Page Not Found',
@@ -20,7 +13,7 @@ const errorHeaderTitle = computed(() => {
 })
 
 const errorTitle = computed(() => {
-    const statuses = {
+    const statuses: { [key: number]: string } = {
         503: 'Service Unavailable',
         500: 'Server Error',
         404: 'Page Not Found',
@@ -31,7 +24,7 @@ const errorTitle = computed(() => {
 })
 
 const errorDescription = computed(() => {
-    const statuses = {
+    const statuses: { [key: number]: string } = {
         503: 'Sorry, we are doing some maintenance. Please check back soon.',
         500: 'Whoops, something went wrong on our servers.',
         404: 'Sorry, the page you are looking for could not be found.',
@@ -56,7 +49,7 @@ const errorDescription = computed(() => {
                 {{ errorDescription }}
             </p>
             <div v-if="status !== 503" class="mt-10 flex items-center justify-center gap-x-6">
-                <InertiaLink href="/" class="btn-primary">Go back home</InertiaLink>
+                <InertiaLink :href="route('home')" class="btn-primary">Go back home</InertiaLink>
             </div>
         </div>
     </main>
