@@ -5,7 +5,7 @@ import routes from '@/routes/routes.json'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { trail } from 'momentum-trail'
-import { DefineComponent, createApp, h } from 'vue'
+import { type DefineComponent, createApp, h } from 'vue'
 
 createInertiaApp({
     progress: {
