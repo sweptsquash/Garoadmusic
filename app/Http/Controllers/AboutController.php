@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Response;
+
 class AboutController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): Response
     {
         return inertia('about'); // TODO
     }

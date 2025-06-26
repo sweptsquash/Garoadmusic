@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AlbumResource\Pages;
 use App\Models\Album;
-use App\Models\Project;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -26,7 +25,7 @@ class AlbumResource extends Resource
             ->schema([
                 Select::make('project_id')
                     ->label('Project')
-                    ->options(Project::select('name', 'id')->get())
+                    ->options(\App\Models\Project::query()->select('name', 'id')->get())
                     ->searchable()
                     ->columnSpanFull(),
 

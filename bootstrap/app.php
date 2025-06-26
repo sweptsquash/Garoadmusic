@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware) {
+    ->withMiddleware(function (Middleware $middleware): void {
         $middleware->web(append: [
             HandleInertiaRequests::class,
         ]);
@@ -24,7 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\HorizonServiceProvider::class,
     ])
-    ->withExceptions(function (Exceptions $exceptions) {
+    ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->respond(function (Response $response, Throwable $exception, Request $request) {
             if ($request->routeIs('filament.admin.*')) {
                 return $response;
@@ -34,7 +34,9 @@ return Application::configure(basePath: dirname(__DIR__))
                 return Inertia::render('error', ['status' => $response->getStatusCode()])
                     ->toResponse($request)
                     ->setStatusCode($response->getStatusCode());
-            } elseif ($response->getStatusCode() === 419) {
+            }
+
+            if ($response->getStatusCode() === 419) {
                 return back()->with([
                     'message' => 'The page expired, please try again.',
                 ]);

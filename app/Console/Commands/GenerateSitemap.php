@@ -25,7 +25,7 @@ class GenerateSitemap extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         Sitemap::create()
             ->add(

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use Inertia\Response;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $projects = Project::with('media')->orderByDesc('id')->paginate(6);
 
@@ -16,7 +17,7 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show(Project $project)
+    public function show(Project $project): Response
     {
         $project->load(['media', 'albums.media']);
 

@@ -2,13 +2,14 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /** @mixin \App\Models\Project */
 class ProjectResource extends JsonResource
 {
-    public function toArray($request)
+    public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
@@ -34,7 +35,7 @@ class ProjectResource extends JsonResource
 
     private function getImages(?Media $media): array
     {
-        if (! $media) {
+        if (! $media instanceof \Spatie\MediaLibrary\MediaCollections\Models\Media) {
             return [
                 'original' => null,
                 'webp' => null,

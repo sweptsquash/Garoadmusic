@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Album;
-use App\Models\Project;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 
@@ -42,8 +40,8 @@ class ProjectSeeder extends Seeder
             ],
         ]);
 
-        $albums->each(function ($album) {
-            $albumModel = Album::create(Arr::except($album, 'image'));
+        $albums->each(function ($album): void {
+            $albumModel = \App\Models\Album::query()->create(Arr::except($album, 'image'));
 
             if (Arr::has($album, 'image')) {
                 $albumModel->addMediaFromUrl(Arr::get($album, 'image'))->toMediaCollection('cover');
@@ -85,7 +83,7 @@ class ProjectSeeder extends Seeder
             [
                 'name' => 'Catechesis',
                 'slug' => 'catechesis',
-                'description' => '<p>Embrace the darkness as a demon-possessed altar boy in this Horror RPG. Explore the city, battle demons, upgrade your weapons, and embark on an unforgettable journey with unique characters and anime-style cutscenes.</p><p>Daniel, an altar boy from a fringe religion, becomes possessed by a demon. Now, every good deed he does opens a gateway to hell. He must be virtuous during the day and battle demons at night. Trying to save his grandpa\'s life without dooming the world to eternal hellfire.</p>',
+                'description' => "<p>Embrace the darkness as a demon-possessed altar boy in this Horror RPG. Explore the city, battle demons, upgrade your weapons, and embark on an unforgettable journey with unique characters and anime-style cutscenes.</p><p>Daniel, an altar boy from a fringe religion, becomes possessed by a demon. Now, every good deed he does opens a gateway to hell. He must be virtuous during the day and battle demons at night. Trying to save his grandpa's life without dooming the world to eternal hellfire.</p>",
                 'developer' => 'Baroque Decay',
                 'publisher' => 'Baroque Decay',
                 'release_date' => null,
@@ -206,10 +204,10 @@ class ProjectSeeder extends Seeder
             ],
         ]);
 
-        $data->reverse()->each(function ($project) {
-            $projectModel = Project::create(Arr::except($project, 'albums'));
+        $data->reverse()->each(function (array $project): void {
+            $projectModel = \App\Models\Project::query()->create(Arr::except($project, 'albums'));
 
-            collect($project['albums'])->each(function ($album) use ($projectModel) {
+            collect($project['albums'])->each(function ($album) use ($projectModel): void {
                 $albumModel = $projectModel->albums()->create(Arr::except($album, 'image'));
 
                 if (Arr::has($album, 'image')) {
