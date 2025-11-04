@@ -18,6 +18,6 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
 
     protected function gate(): void
     {
-        Gate::define('viewHorizon', fn (?User $user): bool => $user instanceof \App\Models\User);
+        Gate::define('viewHorizon', fn (?User $user): bool => $user instanceof User);
     }
 }

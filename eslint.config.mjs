@@ -1,40 +1,16 @@
 // @ts-check
 
-import eslint from '@eslint/js'
+import {
+    defineConfigWithVueTs,
+    vueTsConfigs,
+} from '@vue/eslint-config-typescript'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
-import pluginVue from 'eslint-plugin-vue'
-import tseslint from 'typescript-eslint'
+import vue from 'eslint-plugin-vue'
 import autoImports from './.eslintrc-auto-import.json' with { type: 'json' }
 
-export default tseslint.config(
-    // JS
-    eslint.configs.recommended,
-    {
-        rules: {
-            'no-unused-vars': 'off',
-            'no-undef': 'off',
-        },
-    },
-
-    // TS
-    ...tseslint.configs.recommended,
-    {
-        rules: {
-            '@typescript-eslint/no-unused-vars': 'warn',
-            '@typescript-eslint/no-explicit-any': 'warn',
-        },
-    },
-
-    // Vue
-    ...pluginVue.configs['flat/recommended'],
-    {
-        files: ['*.vue', '**/*.vue'],
-        languageOptions: {
-            parserOptions: {
-                parser: tseslint.parser,
-            },
-        },
-    },
+export default defineConfigWithVueTs(
+    vue.configs['flat/recommended'],
+    vueTsConfigs.recommended,
     {
         ignores: [
             'app/**/*',
@@ -58,19 +34,27 @@ export default tseslint.config(
         ],
     },
     {
-        languageOptions: autoImports,
         rules: {
             'vue/multi-word-component-names': 'off',
+            '@typescript-eslint/no-explicit-any': 'off',
         },
+    },
+    {
+        languageOptions: autoImports,
     },
     {
         rules: {
             'comma-dangle': ['error', 'always-multiline'],
             'prettier/prettier': 'warn',
             'vue/component-name-in-template-casing': ['error', 'PascalCase'],
-            'vue/component-tags-order': ['error', { order: ['script', 'template', 'style'] }],
-            'vue/block-order': ['error', { order: ['script[setup]', 'template', 'style[scoped]'] }],
-            'vue/define-macros-order': ['warn', { order: ['defineProps', 'defineEmits'] }],
+            'vue/block-order': [
+                'error',
+                { order: ['script[setup]', 'template', 'style[scoped]'] },
+            ],
+            'vue/define-macros-order': [
+                'warn',
+                { order: ['defineProps', 'defineEmits'] },
+            ],
             'vue/multi-word-component-names': 'off',
             'vue/no-template-target-blank': [
                 'error',
@@ -85,8 +69,6 @@ export default tseslint.config(
             'no-console': ['warn'],
         },
     },
-
-    // Prettier
     eslintPluginPrettierRecommended,
     {
         rules: {

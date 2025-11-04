@@ -1,7 +1,2 @@
-*
-!.gitignore
-!auto-components.d.ts
-!auto-imports.d.ts
-!app.d.ts
-!page.d.ts
-!vite-env.d.ts
+!*
+routes.d.ts

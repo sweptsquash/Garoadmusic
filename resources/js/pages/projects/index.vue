@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-const props = defineProps<{ projects: App.PageResource<App.Project> }>()
+import type { PageResource, Project } from '@/types'
+
+const props = defineProps<{ projects: PageResource<Project> }>()
 
 const pageTitle = computed(() => {
     if (props.projects.meta.current_page > 1) {

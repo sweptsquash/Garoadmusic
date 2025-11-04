@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactStoreRequest;
+use App\Models\Message;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 
@@ -15,7 +16,7 @@ class ContactController extends Controller
 
     public function store(ContactStoreRequest $request): RedirectResponse
     {
-        \App\Models\Message::query()->create($request->validated());
+        Message::query()->create($request->validated());
 
         return back()->with('success', 'Message sent successfully.');
     }

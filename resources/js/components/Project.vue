@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-defineProps<{ project: App.Project }>()
+import type { Project } from '@/types'
+
+defineProps<{ project: Project }>()
 </script>
 
 <template>

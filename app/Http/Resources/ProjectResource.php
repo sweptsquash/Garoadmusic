@@ -35,7 +35,7 @@ class ProjectResource extends JsonResource
 
     private function getImages(?Media $media): array
     {
-        if (! $media instanceof \Spatie\MediaLibrary\MediaCollections\Models\Media) {
+        if (! $media instanceof Media) {
             return [
                 'original' => null,
                 'webp' => null,

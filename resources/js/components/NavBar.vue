@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
-import type { RouterGlobal } from 'momentum-trail/dist/types/router'
+import type { RouterGlobal } from 'momentum-trail'
 
 const navigationItems = ref<
     {
@@ -74,7 +74,7 @@ onBeforeMount(() => {
 
                 <div class="-mr-2 flex sm:hidden">
                     <DisclosureButton
-                        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-none focus:ring-inset"
                     >
                         <span class="absolute -inset-0.5" />
                         <span class="sr-only">Open main menu</span>
@@ -86,7 +86,7 @@ onBeforeMount(() => {
         </div>
 
         <DisclosurePanel class="sm:hidden">
-            <div class="space-y-1 px-2 pb-3 pt-2">
+            <div class="space-y-1 px-2 pt-2 pb-3">
                 <InertiaLink
                     v-for="(item, index) in navigationItems"
                     :key="index"

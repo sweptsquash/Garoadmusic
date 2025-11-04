@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Album;
+use App\Models\Project;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 
@@ -41,7 +43,7 @@ class ProjectSeeder extends Seeder
         ]);
 
         $albums->each(function ($album): void {
-            $albumModel = \App\Models\Album::query()->create(Arr::except($album, 'image'));
+            $albumModel = Album::query()->create(Arr::except($album, 'image'));
 
             if (Arr::has($album, 'image')) {
                 $albumModel->addMediaFromUrl(Arr::get($album, 'image'))->toMediaCollection('cover');
@@ -205,7 +207,7 @@ class ProjectSeeder extends Seeder
         ]);
 
         $data->reverse()->each(function (array $project): void {
-            $projectModel = \App\Models\Project::query()->create(Arr::except($project, 'albums'));
+            $projectModel = Project::query()->create(Arr::except($project, 'albums'));
 
             collect($project['albums'])->each(function ($album) use ($projectModel): void {
                 $albumModel = $projectModel->albums()->create(Arr::except($album, 'image'));

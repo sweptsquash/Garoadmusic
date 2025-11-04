@@ -2,14 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AlbumResource\Pages;
+use App\Filament\Resources\AlbumResource\Pages\CreateAlbum;
+use App\Filament\Resources\AlbumResource\Pages\EditAlbum;
+use App\Filament\Resources\AlbumResource\Pages\ListAlbums;
 use App\Models\Album;
+use App\Models\Project;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Validation\Rules\File;
 
@@ -25,7 +31,7 @@ class AlbumResource extends Resource
             ->schema([
                 Select::make('project_id')
                     ->label('Project')
-                    ->options(\App\Models\Project::query()->select('name', 'id')->get())
+                    ->options(Project::query()->select('name', 'id')->get())
                     ->searchable()
                     ->columnSpanFull(),
 
@@ -58,11 +64,11 @@ class AlbumResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -71,11 +77,11 @@ class AlbumResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -90,9 +96,9 @@ class AlbumResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAlbums::route('/'),
-            'create' => Pages\CreateAlbum::route('/create'),
-            'edit' => Pages\EditAlbum::route('/{record}/edit'),
+            'index' => ListAlbums::route('/'),
+            'create' => CreateAlbum::route('/create'),
+            'edit' => EditAlbum::route('/{record}/edit'),
         ];
     }
 }

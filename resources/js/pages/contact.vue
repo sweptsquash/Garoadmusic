@@ -30,14 +30,14 @@ function submitForm() {
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AppHead title="Contact Me" />
 
-        <div class="rounded-md bg-neutral shadow-md">
-            <div class="border-b border-base-100 px-4 py-5 sm:px-6">
-                <div class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
-                    <div class="ml-4 mt-4">
-                        <h3 class="text-base font-semibold leading-6 text-neutral-content">
+        <div class="bg-neutral rounded-md shadow-md">
+            <div class="border-base-100 border-b px-4 py-5 sm:px-6">
+                <div class="-mt-4 -ml-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
+                    <div class="mt-4 ml-4">
+                        <h3 class="text-neutral-content text-base leading-6 font-semibold">
                             Contact Me
                         </h3>
-                        <p class="mt-1 text-sm text-neutral-content">
+                        <p class="text-neutral-content mt-1 text-sm">
                             Feel free to reach out to me using the form below.
                         </p>
                     </div>

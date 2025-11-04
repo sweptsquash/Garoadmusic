@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /** @mixin \App\Models\Album */
 class AlbumResource extends JsonResource
@@ -19,9 +20,9 @@ class AlbumResource extends JsonResource
         ];
     }
 
-    private function getImages(?\Spatie\MediaLibrary\MediaCollections\Models\Media $media): array
+    private function getImages(?Media $media): array
     {
-        if (! $media instanceof \Spatie\MediaLibrary\MediaCollections\Models\Media) {
+        if (! $media instanceof Media) {
             return [
                 'original' => null,
                 'webp' => null,

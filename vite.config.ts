@@ -1,3 +1,4 @@
+import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import laravel from 'laravel-vite-plugin'
 import inertiaLayout from 'momentum-layout'
@@ -13,6 +14,9 @@ export default defineConfig({
             '@': '/resources/js',
             '~': '/node_modules',
         },
+    },
+    build: {
+        sourcemap: true,
     },
     plugins: [
         autoimport({
@@ -57,6 +61,7 @@ export default defineConfig({
             valetTls: process.env.VITE_VALET_TLS ? 'garoadmusic.test' : undefined,
         }),
         inertiaLayout(),
+        tailwindcss(),
         vue({
             template: {
                 transformAssetUrls: {

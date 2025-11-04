@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-defineProps<{ album: App.Album }>()
+import type { Album } from '@/types'
+
+defineProps<{ album: Album }>()
 </script>
 
 <template>

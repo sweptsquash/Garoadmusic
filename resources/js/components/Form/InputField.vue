@@ -26,7 +26,7 @@ const hasError = computed(() => !!props.error)
 
 <template>
     <div>
-        <label v-if="label" :for="id" class="block text-sm font-medium leading-6">
+        <label v-if="label" :for="id" class="block text-sm leading-6 font-medium">
             {{ label }}
         </label>
         <div class="relative mt-2 rounded-md shadow-sm">
@@ -36,7 +36,7 @@ const hasError = computed(() => !!props.error)
                 :type
                 :name
                 :class="[
-                    'block w-full rounded-md border-0 bg-base-100 py-1.5 pr-10 text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6',
+                    'bg-base-100 block w-full rounded-md border-0 py-1.5 pr-10 text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6',
                     {
                         'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
                             hasError,

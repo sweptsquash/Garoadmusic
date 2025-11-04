@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-defineProps<{ albums: App.PageResource<App.Album> }>()
+import type { Album, PageResource } from '@/types'
+
+defineProps<{ albums: PageResource<Album> }>()
 </script>
 
 <template>
