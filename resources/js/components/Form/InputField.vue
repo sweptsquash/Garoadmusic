@@ -36,9 +36,9 @@ const hasError = computed(() => !!props.error)
                 :type
                 :name
                 :class="[
-                    'bg-base-100 block w-full rounded-md border-0 py-1.5 pr-10 text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6',
+                    'bg-base-100 block w-full rounded-md border-0 px-4 py-1.5 text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6',
                     {
-                        'text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
+                        'pr-10 text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
                             hasError,
                         'ring-gray-500 placeholder:text-gray-400 focus:ring-indigo-600': !hasError,
                     },
