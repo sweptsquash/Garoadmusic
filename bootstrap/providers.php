@@ -1,7 +1,11 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use App\Providers\Filament\AdminPanelProvider;
+use Olssonm\VeryBasicAuth\VeryBasicAuthServiceProvider;
+
 return [
-    App\Providers\AppServiceProvider::class,
-    App\Providers\Filament\AdminPanelProvider::class,
-    Olssonm\VeryBasicAuth\VeryBasicAuthServiceProvider::class,
+    AppServiceProvider::class,
+    AdminPanelProvider::class,
+    VeryBasicAuthServiceProvider::class,
 ];

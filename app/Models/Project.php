@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -17,7 +20,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property string $description
  * @property string|null $developer
  * @property string|null $publisher
- * @property \Illuminate\Support\Carbon|null $release_date
+ * @property Carbon|null $release_date
  * @property string|null $bandcamp_embed_url
  * @property string|null $soundcloud_embed_url
  * @property string|null $youtube_embed_url
@@ -25,11 +28,11 @@ use Spatie\Sluggable\SlugOptions;
  * @property string|null $quote_author
  * @property array<array-key, mixed>|null $links
  * @property bool $show_logo
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Album> $albums
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection<int, Album> $albums
  * @property-read int|null $albums_count
- * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, Media> $media
+ * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project newModelQuery()
@@ -52,7 +55,7 @@ use Spatie\Sluggable\SlugOptions;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereYoutubeEmbedUrl($value)
  *
- * @mixin \Illuminate\Database\Eloquent\Model
+ * @mixin Model
  */
 class Project extends Model implements HasMedia
 {
