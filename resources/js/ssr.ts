@@ -1,11 +1,11 @@
-import Layout from '@/layouts/default.vue'
-import routes from '@/routes/routes.json'
 import { createInertiaApp } from '@inertiajs/vue3'
 import createServer from '@inertiajs/vue3/server'
 import { renderToString } from '@vue/server-renderer'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { trail } from 'momentum-trail'
 import { createSSRApp, type DefineComponent, h } from 'vue'
+import Layout from '@/layouts/default.vue'
+import routes from '@/routes/routes.json'
 
 createServer(
     (page) =>

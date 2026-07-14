@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { Project } from '@/types'
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { isEmpty } from 'lodash'
+import type { Project } from '@/types'
 
 const props = defineProps<{ project: Project }>()
 
@@ -24,7 +24,7 @@ const embedUrl = computed(() => {
         <AppHead :title="project.name" />
 
         <div
-            class="bg-neutral relative isolate -mx-6 -mt-6 min-h-[40vh] overflow-hidden px-6 py-24 sm:py-32 lg:px-8"
+            class="relative isolate -mx-6 -mt-6 min-h-[40vh] overflow-hidden bg-neutral px-6 py-24 sm:py-32 lg:px-8"
         >
             <img
                 v-if="project.banner.original"
@@ -59,7 +59,7 @@ const embedUrl = computed(() => {
         </div>
 
         <div class="mt-4 flex flex-col gap-4 lg:flex-row">
-            <div class="bg-neutral relative w-full flex-grow space-y-4 rounded-md p-4 shadow-md">
+            <div class="relative w-full flex-grow space-y-4 rounded-md bg-neutral p-4 shadow-md">
                 <h1 class="text-3xl">{{ project.name }}</h1>
                 <p>
                     <strong>Developer:</strong>
@@ -83,7 +83,7 @@ const embedUrl = computed(() => {
                             v-for="(link, index) in project.links"
                             :key="`link-${index}`"
                             :href="link.url"
-                            class="hover:bg-base-100 focus:bg-base-100 flex rounded-md border p-4 shadow-md"
+                            class="flex rounded-md border p-4 shadow-md hover:bg-base-100 focus:bg-base-100"
                             :title="link.name"
                             target="_blank"
                             rel="noopener noreferrer"

@@ -1,13 +1,12 @@
 import '../css/app.css'
-
-import Layout from '@/layouts/default.vue'
-import routes from '@/routes/routes.json'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { trail } from 'momentum-trail'
 import { type DefineComponent, createApp, h } from 'vue'
+import Layout from '@/layouts/default.vue'
+import routes from '@/routes/routes.json'
 
-createInertiaApp({
+await createInertiaApp({
     progress: {
         color: '#4B5563',
     },

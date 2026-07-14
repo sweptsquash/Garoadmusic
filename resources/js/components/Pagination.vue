@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { PageMeta } from '@/types'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid/index.js'
+import type { PageMeta } from '@/types'
 
 const props = withDefaults(
     defineProps<{
@@ -108,7 +108,7 @@ function calcPageRange() {
         </div>
         <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
             <div>
-                <p class="dark:text-base-content text-sm text-gray-700">
+                <p class="text-sm text-gray-700 dark:text-base-content">
                     Showing
                     {{ ' ' }}
                     <span class="font-medium">{{ useFormatNumber(meta?.from) }}</span>

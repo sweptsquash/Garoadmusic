@@ -1,6 +1,6 @@
-import { AppPageProps } from '@/types/index'
 import type Echo from 'laravel-echo'
 import type Pusher from 'pusher-js'
+import { AppPageProps } from '@/types/index'
 
 declare global {
     interface Window {

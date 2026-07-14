@@ -45,7 +45,7 @@ const errorDescription = computed(() => {
             >
                 {{ errorHeaderTitle }}
             </h1>
-            <p class="dark:text-base-content mt-6 text-base leading-7 text-gray-600">
+            <p class="mt-6 text-base leading-7 text-gray-600 dark:text-base-content">
                 {{ errorDescription }}
             </p>
             <div v-if="status !== 503" class="mt-10 flex items-center justify-center gap-x-6">

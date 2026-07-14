@@ -1,5 +1,6 @@
 services:
-    laravel.test:
+    garoad_app:
+        container_name: garoad_app
         build:
             context: ./docker/8.5
             dockerfile: Dockerfile
@@ -26,7 +27,8 @@ services:
             - redis
             - mailpit
     mysql:
-        image: 'mysql/mysql-server:8.0'
+        container_name: garoad_mysql
+        image: 'mysql:lts'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
@@ -50,6 +52,7 @@ services:
             retries: 3
             timeout: 5s
     redis:
+        container_name: garoad_redis
         image: 'redis:alpine'
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
@@ -65,6 +68,7 @@ services:
             retries: 3
             timeout: 5s
     mailpit:
+        container_name: garoad_mailpit
         image: 'axllent/mailpit:latest'
         ports:
             - '${FORWARD_MAILPIT_PORT:-1025}:1025'

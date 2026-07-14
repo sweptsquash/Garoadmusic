@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import type { RouterGlobal } from 'momentum-trail'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
-import type { RouterGlobal } from 'momentum-trail'
 
 const navigationItems = ref<
     {

@@ -36,7 +36,7 @@ const hasError = computed(() => !!props.error)
                 :name
                 :rows
                 :class="[
-                    'bg-base-100 block w-full rounded-md border-0 px-4 py-1.5 text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6',
+                    'block w-full rounded-md border-0 bg-base-100 px-4 py-1.5 text-white ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6',
                     {
                         'pr-10 text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500':
                             hasError,

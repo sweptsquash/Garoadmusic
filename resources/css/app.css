@@ -7,15 +7,15 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --primary: #9FE88D;
-    --secondary: #FF7D5C;
-    --accent: #C792E9;
+    --primary: #9fe88d;
+    --secondary: #ff7d5c;
+    --accent: #c792e9;
     --neutral: #1c212b;
-    --neutral-content: #B2CCD6;
-    --base-100: #2A303C;
+    --neutral-content: #b2ccd6;
+    --base-100: #2a303c;
     --base-200: #242933;
-    --base-300: #20252E;
-    --base-content: #B2CCD6;
+    --base-300: #20252e;
+    --base-content: #b2ccd6;
     --info: #28ebff;
     --success: #62efbd;
     --warning: #efd057;
@@ -37,7 +37,7 @@
     }
 
     body {
-        @apply h-full w-full font-sans antialiased bg-base-100 text-base-content;
+        @apply h-full w-full bg-base-100 font-sans text-base-content antialiased;
     }
 
     .text-bebas {
@@ -48,38 +48,37 @@
         min-height: calc(100vh - 184px);
     }
 
-
     .projects {
         min-height: calc(100vh - (184px + 3rem));
     }
 
     .project {
-        @apply block w-full rounded-md shadow-md h-full bg-neutral relative ease-in-out duration-300 overflow-hidden;
+        @apply relative block h-full w-full overflow-hidden rounded-md bg-neutral shadow-md duration-300 ease-in-out;
 
         & > .background {
-            @apply h-full w-full block absolute z-[0] bg-cover bg-center;
+            @apply absolute z-[0] block h-full w-full bg-cover bg-center;
 
             &::before {
-                content: "";
-                @apply bg-neutral/25 h-full w-full opacity-0 block absolute z-[1];
+                content: '';
+                @apply absolute z-[1] block h-full w-full bg-neutral/25 opacity-0;
             }
         }
 
         & > * {
-            @apply ease-in-out duration-300;
+            @apply duration-300 ease-in-out;
         }
 
         & > .logo {
             transform-origin: center;
-            @apply z-[2] absolute bottom-0 w-full;
+            @apply absolute bottom-0 z-[2] w-full;
         }
 
         & > .logo > img {
-            @apply max-w-[50%] h-auto w-full mx-auto;
+            @apply mx-auto h-auto w-full max-w-[50%];
         }
 
         & > .info {
-            @apply w-full h-[200px] bg-neutral p-4 absolute bottom-[-200px] left-0 text-white;
+            @apply absolute bottom-[-200px] left-0 h-[200px] w-full bg-neutral p-4 text-white;
         }
 
         &:hover,
@@ -98,24 +97,24 @@
             }
 
             & > .info {
-                @apply ease-in-out duration-300 bottom-0;
+                @apply bottom-0 duration-300 ease-in-out;
             }
         }
     }
 
     .album {
-        @apply rounded-md shadow-md block h-auto overflow-hidden relative bg-neutral;
+        @apply relative block h-auto overflow-hidden rounded-md bg-neutral shadow-md;
 
         & > * {
-            @apply ease-in-out duration-300;
+            @apply duration-300 ease-in-out;
         }
 
         & > .cover > img {
-            @apply w-full h-auto block;
+            @apply block h-auto w-full;
         }
 
         & > .info {
-            @apply absolute bottom-[-100px] p-2 w-full bg-neutral;
+            @apply absolute bottom-[-100px] w-full bg-neutral p-2;
         }
 
         &:hover,
