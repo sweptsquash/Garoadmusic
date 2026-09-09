@@ -13,7 +13,12 @@ if [ ! -d /.composer ]; then
     mkdir /.composer
 fi
 
+mkdir -p /run/php
+chmod 0775 /run/php
+chown sail:sail /run/php
+
 chmod -R ugo+rw /.composer
+chown -R sail:sail /var/log
 
 if [ $# -gt 0 ]; then
     if [ "$SUPERVISOR_PHP_USER" = "root" ]; then
