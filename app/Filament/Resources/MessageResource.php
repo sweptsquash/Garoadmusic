@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources;
 
+use AmidEsfahani\FilamentTinyEditor\TinyEditor;
 use App\Filament\Resources\MessageResource\Pages\EditMessage;
 use App\Filament\Resources\MessageResource\Pages\ListMessages;
 use App\Models\Message;
@@ -16,7 +17,6 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class MessageResource extends Resource
 {

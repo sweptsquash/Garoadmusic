@@ -1,12 +1,12 @@
+import inertia from '@inertiajs/vite'
+import { wayfinder } from '@laravel/vite-plugin-wayfinder'
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import laravel from 'laravel-vite-plugin'
-import inertiaLayout from 'momentum-layout'
 import autoimport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import manifestSRI from 'vite-plugin-manifest-sri'
-import { watch } from 'vite-plugin-watch'
 
 export default defineConfig({
     resolve: {
@@ -29,7 +29,6 @@ export default defineConfig({
             imports: [
                 'vue',
                 '@vueuse/core',
-                { 'momentum-trail': ['route', 'current'] },
                 { '@inertiajs/vue3': ['router', 'useForm', 'usePage', 'useRemember'] },
             ],
         }),
@@ -56,11 +55,17 @@ export default defineConfig({
         }),
         laravel({
             input: ['resources/js/app.ts', 'resources/js/pages/error.vue', 'resources/css/app.css'],
-            ssr: 'resources/js/ssr.ts',
             refresh: ['resources/css/**', 'resources/js/**', 'routes/**'],
             valetTls: process.env.VITE_VALET_TLS ? 'garoadmusic.test' : undefined,
         }),
-        inertiaLayout(),
+        inertia({
+            ssr: {
+                entry: 'resources/js/ssr.ts',
+                port: 13715,
+                cluster: true,
+            },
+        }),
+        wayfinder(),
         tailwindcss(),
         vue({
             template: {
@@ -69,10 +74,6 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
-        }),
-        watch({
-            pattern: 'routes/**/*.php',
-            command: 'php artisan trail:generate',
         }),
         manifestSRI(),
     ],

@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        @vite(['resources/js/app.ts'])
-        @inertiaHead
+        @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
+        <x-inertia::head />
     </head>
-    <body>
-        @inertia
+    <body class="font-sans antialiased">
+        <x-inertia::app />
     </body>
 </html>

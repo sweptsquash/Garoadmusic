@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Observers\MessageObserver;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -34,13 +35,11 @@ use Illuminate\Support\Carbon;
  * @mixin Model
  */
 #[ObservedBy(MessageObserver::class)]
-class Message extends Model
-{
-    protected $fillable = [
-        'name',
-        'email',
-        'subject',
-        'message',
-        'ip_address',
-    ];
-}
+#[Fillable([
+    'name',
+    'email',
+    'subject',
+    'message',
+    'ip_address',
+])]
+class Message extends Model {}

@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import type { Project } from '@/types'
+import { show } from '@/routes/projects'
 
 defineProps<{ project: Project }>()
 </script>
 
 <template>
-    <InertiaLink :href="route('projects.show', project.slug)" class="project" :title="project.name">
+    <InertiaLink :href="show.url(project.slug)" class="project" :title="project.name">
         <div
             class="background"
             :style="

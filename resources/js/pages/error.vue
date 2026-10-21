@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { home } from '@/routes'
+
 const props = defineProps<{ status: number }>()
 
 const errorHeaderTitle = computed(() => {
@@ -49,7 +51,7 @@ const errorDescription = computed(() => {
                 {{ errorDescription }}
             </p>
             <div v-if="status !== 503" class="mt-10 flex items-center justify-center gap-x-6">
-                <InertiaLink :href="route('home')" class="btn-primary">Go back home</InertiaLink>
+                <InertiaLink :href="home.url()" class="btn-primary">Go back home</InertiaLink>
             </div>
         </div>
     </main>

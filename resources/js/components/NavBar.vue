@@ -1,46 +1,22 @@
 <script lang="ts" setup>
-import type { RouterGlobal } from 'momentum-trail'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { about, home, music } from '@/routes'
+import { index as contact } from '@/routes/contact'
+import { index as projects } from '@/routes/projects'
 
-const navigationItems = ref<
-    {
-        name: string
-        route: keyof RouterGlobal['routes'] | keyof RouterGlobal['wildcards']
-        href: string
-        current: boolean
-    }[]
->([
-    { name: 'Home', href: '/', route: 'home', current: false },
-    { name: 'About Me', href: '/about', route: 'about', current: false },
-    { name: 'Projects', href: '/projects', route: 'projects.*', current: false },
-    { name: 'Music', href: '/music', route: 'music', current: false },
-    { name: 'Contact Me', href: '/contact', route: 'contact.*', current: false },
-])
+const page = usePage()
 
-onBeforeMount(() => {
-    router.on('navigate', () => {
-        const currentActive = navigationItems.value.findIndex((item) => item.current === true)
-        const newActive = navigationItems.value.findIndex((item) => {
-            if (item.route === null) {
-                return false
-            }
+const navigationItems = computed(() => {
+    const routeName = String(page.props.route ?? '')
 
-            return current(item.route)
-        })
-
-        if (newActive === -1 && currentActive !== -1) {
-            navigationItems.value[currentActive].current = false
-        }
-
-        if (newActive > -1 && currentActive !== newActive) {
-            if (currentActive !== -1) {
-                navigationItems.value[currentActive].current = false
-            }
-
-            navigationItems.value[newActive].current = true
-        }
-    })
+    return [
+        { name: 'Home', href: home.url(), current: routeName === 'home' },
+        { name: 'About Me', href: about.url(), current: routeName === 'about' },
+        { name: 'Projects', href: projects.url(), current: routeName.startsWith('projects.') },
+        { name: 'Music', href: music.url(), current: routeName === 'music' },
+        { name: 'Contact Me', href: contact.url(), current: routeName.startsWith('contact.') },
+    ]
 })
 </script>
 
@@ -50,13 +26,15 @@ onBeforeMount(() => {
             <div class="flex h-16 items-center justify-between">
                 <div class="flex flex-1 items-center">
                     <div class="flex-shrink-0">
-                        <InertiaLink href="/" class="logo text-bebas text-2xl">MK</InertiaLink>
+                        <InertiaLink :href="home.url()" class="logo text-bebas text-2xl">
+                            MK
+                        </InertiaLink>
                     </div>
                     <div class="mx-auto hidden sm:block">
                         <div class="flex space-x-4">
                             <InertiaLink
-                                v-for="(item, index) in navigationItems"
-                                :key="index"
+                                v-for="item in navigationItems"
+                                :key="item.name"
                                 :href="item.href"
                                 :class="[
                                     'block rounded-md px-3 py-2 text-sm font-medium',
@@ -88,8 +66,8 @@ onBeforeMount(() => {
         <DisclosurePanel class="sm:hidden">
             <div class="space-y-1 px-2 pt-2 pb-3">
                 <InertiaLink
-                    v-for="(item, index) in navigationItems"
-                    :key="index"
+                    v-for="item in navigationItems"
+                    :key="item.name"
                     :href="item.href"
                     :class="[
                         'block rounded-md px-3 py-2 text-sm font-medium',

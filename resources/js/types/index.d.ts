@@ -59,6 +59,6 @@ export type PageMeta = {
 export type AppPageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     env: string
     location: string
-    route: string
+    route: string | null
     isWebpSupported: boolean
 }
