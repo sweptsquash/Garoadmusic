@@ -28,6 +28,11 @@ export default defineConfig({
     },
     ignorePatterns: [
         '.github/**/*',
+        'vendor/**',
+        'node_modules/**',
+        'public/**',
+        'bootstrap/ssr/**',
+        'tailwind.config.js',
         'resources/js/components/ui/*',
         'resources/views/mail/*',
         'resources/js/routes/routes.json',

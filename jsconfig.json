@@ -1,13 +1,12 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "allowJs": true,
         "resolveJsonModule": true,
         "module": "ESNext",
-        "moduleResolution": "Node",
+        "moduleResolution": "bundler",
         "paths": {
-            "@/*": ["resources/js/*"],
-            "~/*": ["node_modules/*"]
+            "@/*": ["./resources/js/*"],
+            "~/*": ["./node_modules/*"]
         }
     },
     "exclude": ["node_modules", "public"]

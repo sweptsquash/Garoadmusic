@@ -2,25 +2,15 @@
     "compilerOptions": {
         "target": "ESNext",
         "useDefineForClassFields": true,
-        "lib": [
-            "ESNext",
-            "DOM",
-            "DOM.Iterable",
-            "WebWorker"
-        ],
+        "lib": ["ESNext", "DOM", "DOM.Iterable", "WebWorker"],
         "jsx": "preserve",
         "jsxImportSource": "vue",
         "module": "ESNext",
         "moduleResolution": "bundler",
         "paths": {
-            "@/*": ["./resources/js/*"],
+            "@/*": ["./resources/js/*"]
         },
-        "types": [
-            "vite/client",
-            "node",
-            "@inertiajs/vue3",
-            "./resources/js/types"
-        ],
+        "types": ["vite/client", "node", "@inertiajs/vue3", "./resources/js/types"],
         "resolveJsonModule": true,
         "allowJs": true,
         "sourceMap": true,
@@ -37,8 +27,5 @@
         "resources/js/**/*.tsx",
         "resources/js/**/*.vue"
     ],
-    "exclude": [
-        "./oxlint.config.ts",
-        "./oxfmt.config.ts"
-    ]
+    "exclude": ["./oxlint.config.ts", "./oxfmt.config.ts"]
 }
