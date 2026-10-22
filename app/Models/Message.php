@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Observers\MessageObserver;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
@@ -20,17 +21,17 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message whereIpAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message whereMessage($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message whereSubject($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Message whereUpdatedAt($value)
+ * @method static Builder<static>|Message newModelQuery()
+ * @method static Builder<static>|Message newQuery()
+ * @method static Builder<static>|Message query()
+ * @method static Builder<static>|Message whereCreatedAt($value)
+ * @method static Builder<static>|Message whereEmail($value)
+ * @method static Builder<static>|Message whereId($value)
+ * @method static Builder<static>|Message whereIpAddress($value)
+ * @method static Builder<static>|Message whereMessage($value)
+ * @method static Builder<static>|Message whereName($value)
+ * @method static Builder<static>|Message whereSubject($value)
+ * @method static Builder<static>|Message whereUpdatedAt($value)
  *
  * @mixin Model
  */

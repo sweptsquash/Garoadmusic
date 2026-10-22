@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
@@ -22,15 +23,15 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property-read int|null $media_count
  * @property-read Project|null $project
  *
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album whereProjectId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Album whereUrl($value)
+ * @method static Builder<static>|Album newModelQuery()
+ * @method static Builder<static>|Album newQuery()
+ * @method static Builder<static>|Album query()
+ * @method static Builder<static>|Album whereCreatedAt($value)
+ * @method static Builder<static>|Album whereId($value)
+ * @method static Builder<static>|Album whereName($value)
+ * @method static Builder<static>|Album whereProjectId($value)
+ * @method static Builder<static>|Album whereUpdatedAt($value)
+ * @method static Builder<static>|Album whereUrl($value)
  *
  * @mixin Model
  */
