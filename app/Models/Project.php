@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -36,25 +37,25 @@ use Spatie\Sluggable\SlugOptions;
  * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  *
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereBandcampEmbedUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereDeveloper($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereLinks($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project wherePublisher($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereQuote($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereQuoteAuthor($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereReleaseDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereShowLogo($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereSoundcloudEmbedUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereYoutubeEmbedUrl($value)
+ * @method static Builder<static>|Project newModelQuery()
+ * @method static Builder<static>|Project newQuery()
+ * @method static Builder<static>|Project query()
+ * @method static Builder<static>|Project whereBandcampEmbedUrl($value)
+ * @method static Builder<static>|Project whereCreatedAt($value)
+ * @method static Builder<static>|Project whereDescription($value)
+ * @method static Builder<static>|Project whereDeveloper($value)
+ * @method static Builder<static>|Project whereId($value)
+ * @method static Builder<static>|Project whereLinks($value)
+ * @method static Builder<static>|Project whereName($value)
+ * @method static Builder<static>|Project wherePublisher($value)
+ * @method static Builder<static>|Project whereQuote($value)
+ * @method static Builder<static>|Project whereQuoteAuthor($value)
+ * @method static Builder<static>|Project whereReleaseDate($value)
+ * @method static Builder<static>|Project whereShowLogo($value)
+ * @method static Builder<static>|Project whereSlug($value)
+ * @method static Builder<static>|Project whereSoundcloudEmbedUrl($value)
+ * @method static Builder<static>|Project whereUpdatedAt($value)
+ * @method static Builder<static>|Project whereYoutubeEmbedUrl($value)
  *
  * @mixin Model
  */
