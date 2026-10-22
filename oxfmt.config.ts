@@ -35,9 +35,10 @@ export default defineConfig({
         'tailwind.config.js',
         'resources/js/components/ui/*',
         'resources/views/mail/*',
-        'resources/js/routes/routes.json',
+        'resources/js/actions/**',
+        'resources/js/routes/**',
+        'resources/js/wayfinder/**',
         'resources/js/types/auto-components.d.ts',
         'resources/js/types/auto-imports.d.ts',
-        'resources/js/types/routes.d.ts',
     ],
 })

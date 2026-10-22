@@ -2,30 +2,30 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build:dev": "run-p routes lint && vite build --mode development && vite build --mode development --ssr",
-        "build:prod": "run-p routes lint tsc && vite build && vite build --ssr",
-        "dev": "run-p routes lint && vite",
+        "build:dev": "npm run routes && npm run lint && vite build --mode development && vite build --mode development --ssr",
+        "build:prod": "npm run routes && npm run lint && npm run tsc && vite build && vite build --ssr",
+        "dev": "npm run routes && npm run lint && vite",
         "lint": "oxlint --type-aware --fix && oxfmt --write",
-        "routes": "php artisan trail:generate",
+        "routes": "php artisan wayfinder:generate",
         "test:lint": "oxlint --type-aware && oxfmt --check",
         "tsc": "vue-tsc --noEmit"
     },
     "dependencies": {
         "@headlessui/vue": "^1.7.23",
         "@heroicons/vue": "^2.2.0",
-        "@inertiajs/vue3": "^2.3.15",
+        "@inertiajs/vite": "^3.0",
+        "@inertiajs/vue3": "^3.0",
         "@vue/server-renderer": "^3.5.28",
         "@vueuse/core": "^14.2.1",
         "dayjs": "^1.11.19",
         "lodash": "^4.17.23",
         "mini-svg-data-uri": "^1.4.4",
-        "momentum-layout": "^0.1.0",
-        "momentum-trail": "^0.4.0",
         "pluralize": "^8.0.0",
         "vue": "^3.5.28",
         "vue-demi": "^0.14.10"
     },
     "devDependencies": {
+        "@laravel/vite-plugin-wayfinder": "^0.1",
         "@tailwindcss/forms": "^0.5.10",
         "@tailwindcss/typography": "^0.5.19",
         "@tailwindcss/vite": "^4.1.16",
@@ -51,7 +51,6 @@
         "vite": "^8.1.4",
         "vite-plugin-manifest-sri": "^0.2.0",
         "vite-plugin-oxlint": "^2.1.2",
-        "vite-plugin-watch": "^0.3.1",
         "vue-tsc": "^3.3.3"
     },
     "optionalDependencies": {

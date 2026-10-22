@@ -1,30 +1,30 @@
 import '../css/app.css'
+import type { DefineComponent } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
-import { trail } from 'momentum-trail'
-import { type DefineComponent, createApp, h } from 'vue'
+import { createApp, createSSRApp, h } from 'vue'
 import Layout from '@/layouts/default.vue'
-import routes from '@/routes/routes.json'
+
+const appName = import.meta.env.VITE_APP_NAME || 'Michael "Garoad" Kelly'
 
 await createInertiaApp({
     progress: {
         color: '#4B5563',
     },
-    resolve: (name: string) =>
-        resolvePageComponent(
-            `./pages/${name}.vue`,
-            import.meta.glob<DefineComponent>('./pages/**/*.vue'),
-        ).then((module) => {
-            const page = module.default
-
-            page.layout = page.layout || Layout
-
-            return page
-        }) as Promise<DefineComponent>,
+    pages: {
+        path: './pages',
+        lazy: true,
+    },
+    title: (title) => (title ? `${title} | ${appName}` : appName),
+    layout: () => Layout,
+    resolve: (name) => {
+        const pages = import.meta.glob<DefineComponent>('./pages/**/*.vue')
+        return pages[`./pages/${name}.vue`]()
+    },
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
+        const createVueApp = el.hasAttribute('data-server-rendered') ? createSSRApp : createApp
+
+        createVueApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(trail, { routes, absolute: true })
             .mount(el)
     },
 })

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -57,26 +58,25 @@ use Spatie\Sluggable\SlugOptions;
  *
  * @mixin Model
  */
+#[Fillable([
+    'name',
+    'slug',
+    'description',
+    'developer',
+    'publisher',
+    'release_date',
+    'bandcamp_embed_url',
+    'soundcloud_embed_url',
+    'youtube_embed_url',
+    'quote',
+    'quote_author',
+    'links',
+    'show_logo',
+])]
 class Project extends Model implements HasMedia
 {
     use HasSlug;
     use InteractsWithMedia;
-
-    protected $fillable = [
-        'name',
-        'slug',
-        'description',
-        'developer',
-        'publisher',
-        'release_date',
-        'bandcamp_embed_url',
-        'soundcloud_embed_url',
-        'youtube_embed_url',
-        'quote',
-        'quote_author',
-        'links',
-        'show_logo',
-    ];
 
     protected $casts = [
         'release_date' => 'datetime',

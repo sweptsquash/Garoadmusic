@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { store } from '@/routes/contact'
+
 const form = useForm({
     name: '',
     email: '',
@@ -13,7 +15,7 @@ const displaySuccess = ref(false)
 function submitForm() {
     isProcessing.value = true
 
-    form.post(route('contact.store'), {
+    form.post(store.url(), {
         onSuccess: () => {
             form.reset()
             isProcessing.value = false

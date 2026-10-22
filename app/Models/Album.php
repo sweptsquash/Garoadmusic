@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
@@ -33,15 +34,14 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  *
  * @mixin Model
  */
+#[Fillable([
+    'project_id',
+    'name',
+    'url',
+])]
 class Album extends Model implements HasMedia
 {
     use InteractsWithMedia;
-
-    protected $fillable = [
-        'project_id',
-        'name',
-        'url',
-    ];
 
     public function registerMediaCollections(): void
     {

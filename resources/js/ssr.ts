@@ -1,37 +1,31 @@
 import { createInertiaApp } from '@inertiajs/vue3'
 import createServer from '@inertiajs/vue3/server'
-import { renderToString } from '@vue/server-renderer'
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
-import { trail } from 'momentum-trail'
-import { createSSRApp, type DefineComponent, h } from 'vue'
+import { createSSRApp, DefineComponent, h } from 'vue'
+import { renderToString } from 'vue/server-renderer'
 import Layout from '@/layouts/default.vue'
-import routes from '@/routes/routes.json'
+
+const appName = import.meta.env.VITE_APP_NAME || 'Michael "Garoad" Kelly'
 
 createServer(
     (page) =>
         createInertiaApp({
             page,
-            render: renderToString,
-            resolve: (name: string) =>
-                resolvePageComponent(
-                    `./pages/${name}.vue`,
-                    import.meta.glob<DefineComponent>('./pages/**/*.vue'),
-                ).then((module) => {
-                    const page = module.default
-
-                    page.layout = page.layout || Layout
-
-                    return page
-                }) as Promise<DefineComponent>,
-            setup({ App, props, plugin }) {
-                const app = createSSRApp({
-                    render: () => h(App, props),
-                })
-                    .use(plugin)
-                    .use(trail, { routes, absolute: true })
-
-                return app
+            pages: {
+                path: './pages',
+                lazy: true,
             },
+            render: renderToString,
+            title: (title) => (title ? `${title} | ${appName}` : appName),
+            layout: () => Layout,
+            resolve: (name) => {
+                const pages = import.meta.glob<DefineComponent>('./pages/**/*.vue')
+                return pages[`./pages/${name}.vue`]()
+            },
+            setup: ({ App, props, plugin }) =>
+                createSSRApp({ render: () => h(App, props) }).use(plugin),
         }),
-    { cluster: true, port: 13715 },
+    {
+        cluster: true,
+        port: 13715,
+    },
 )
